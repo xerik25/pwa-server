@@ -1,0 +1,4 @@
+[submodule "pwa-client"]
+	path = pwa-client
+	url = https://github.com/xerik25/pwa-client.git
+	branch = develop

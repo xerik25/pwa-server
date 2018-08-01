@@ -10,6 +10,6 @@ RUN yarn install --frozen-lockfile
 
 COPY . .
 
-EXPOSE 9999
+EXPOSE 9000
 
 CMD [ "yarn", "prod" ]

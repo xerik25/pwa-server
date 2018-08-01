@@ -51,6 +51,11 @@ git submodule sync --recursive
 git submodule update --init --recursive
 ```
 
+If you need to pull updates from the remote branch
+```bash
+git submodule update --remote
+```
+
 #### Dockerization
 Presume Docker is installed. [How to for MacOS](https://docs.docker.com/docker-for-mac/install/)
 Docker Container created, source configurable in Dockerfile.
@@ -67,10 +72,18 @@ docker-compose up
 
 [Kitematic](https://kitematic.com/) helps show what docker images are running and allows UI to start/stop them.
 
-#### Build Tasks
-* TODO: Setup Bitbucket pipeline for deployment to AWS
-* TODO: Setup git submodule for client app
-* TODO: Setup Docker deployment
+#### Deploying docker image to Heroku
+```bash
+# Login
+heroku login
+heroku container:login
+
+# Build and push
+heroku container:push web
+heroku container:release web
+```
+
+* When updating the client app keep in mind you will need to pull the submodule updates from the remote repo before deploying
 
 ### Express
 * Version 4.16.3
