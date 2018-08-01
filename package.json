@@ -1,0 +1,54 @@
+{
+  "name": "pwa-server",
+  "version": "1.0.0",
+  "description": "Seed app for Express server with websockets that serves create-react-app for client application",
+  "main": "./app/server.js",
+  "scripts": {
+    "build:client-dev": "cd ../pwa-client/ && yarn && yarn run build",
+    "postbuild:client-dev": "yarn run copy:client-dev",
+    "build:client-prod": "cd ./pwa-client/ && yarn && yarn run build",
+    "postbuild:client-prod": "yarn run copy:client-prod",
+    "copy:client-dev": "cpx \"../pwa-client/build/**/*\" ./app/dist",
+    "copy:client-prod": "cpx \"./pwa-client/build/**/*\" ./app/dist",
+    "test": "mocha 'app/tests/**/*.js' --exit",
+    "test:watch": "mocha 'app/tests/**/*.js' --watch",
+    "test:coverage": "nyc mocha 'app/tests/**/*.js' --exit",
+    "lint": "standard --verbose | snazzy",
+    "lint-fix": "standard --fix",
+    "jsdoc": "jsdoc app -r --destination ./jsdocs && live-server jsdocs",
+    "predev": "npm run lint && npm run build:client-dev && echo \"Starting server\"",
+    "dev": "nodemon --watch app server.js",
+    "prod": "yarn run build:client-prod && node ./app/server.js",
+    "start": "node ./app/server.js"
+  },
+  "author": "Landon",
+  "dependencies": {
+    "cpx": "^1.5.0",
+    "express": "^4.16.3",
+    "nodemon": "^1.18.1",
+    "request": "^2.87.0",
+    "socket.io": "^2.1.1",
+    "ws": "^5.2.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "chai": "^4.1.2",
+    "jsdoc": "^3.5.5",
+    "live-server": "^1.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "snazzy": "^7.1.1",
+    "standard": "^11.0.1",
+    "supertest": "^3.1.0"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "env": [
+      "mocha"
+    ],
+    "ignore": [
+      "dist/*",
+      "pwa-client/*"
+    ]
+  }
+}

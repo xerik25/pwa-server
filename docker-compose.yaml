@@ -1,0 +1,10 @@
+version: '3'
+services:
+  webapp:
+    build: .
+    image: deployment-tool
+    volumes:
+        - .:/app
+        - /node_modules
+    ports:
+      - "9999:9999"
