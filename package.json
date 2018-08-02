@@ -4,7 +4,7 @@
   "description": "Seed app for Express server with websockets that serves create-react-app for client application",
   "main": "./app/server.js",
   "scripts": {
-    "build:client-dev": "cd ../pwa-client/ && yarn && yarn run build",
+    "build:client-dev": "cd ../pwa-client/ && yarn && yarn run start",
     "postbuild:client-dev": "yarn run copy:client-dev",
     "build:client-prod": "cd ./pwa-client/ && yarn && yarn run build",
     "postbuild:client-prod": "yarn run copy:client-prod",
