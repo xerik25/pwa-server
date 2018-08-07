@@ -1,0 +1,10 @@
+version: '3'
+services:
+  webapp:
+    build: .
+    image: pwa
+    volumes:
+        - .:/app
+        - /node_modules
+    ports:
+      - "9000:9000"
