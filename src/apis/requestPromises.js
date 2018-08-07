@@ -10,7 +10,7 @@ const requestServiceGet = async (apiParameters) =>
   new Promise((resolve, reject) => {
     request(apiParameters, (error, response, data) => {
       if (error) reject(error)
-      else resolve(data)
+      else resolve(response)
     })
   })
 
