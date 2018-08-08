@@ -4,12 +4,6 @@
   "description": "Seed app for Express server with websockets that serves create-react-app for client application",
   "main": "./src/server.js",
   "scripts": {
-    "build:client-dev": "cd ../pwa-client/ && yarn && yarn run start",
-    "postbuild:client-dev": "yarn run copy:client-dev",
-    "build:client-prod": "cd ./pwa-client/ && yarn && yarn run build",
-    "postbuild:client-prod": "yarn run copy:client-prod",
-    "copy:client-dev": "cpx \"../pwa-client/build/**/*\" ./src/dist",
-    "copy:client-prod": "cpx \"./pwa-client/build/**/*\" ./src/dist",
     "test": "mocha 'src/tests/**/*.js' --exit",
     "test:watch": "mocha 'src/tests/**/*.js' --watch",
     "test:coverage": "nyc mocha 'src/tests/**/*.js' --exit",
