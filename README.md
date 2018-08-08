@@ -5,6 +5,7 @@
 	* Node Applicaiton
 * Dockerization
 * Express
+* Environment Variables
 
 ### Local Configuration
 
@@ -88,3 +89,7 @@ heroku container:release web
 ### Express
 * Version 4.16.3
 * [Best Practices](https://expressjs.com/en/advanced/best-practice-performance.html)
+
+### Environment Variables
+Copy .env.example and save as .env
+This is where environment variables will be setup.
