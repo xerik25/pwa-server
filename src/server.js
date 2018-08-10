@@ -3,20 +3,27 @@ const routes = require('./routes/index')
 const initSockets = require('./sockets/index')
 
 // init Express, Websockets and Router
-const app = require('express')()
-const server = require('http').Server(app)
+const app = express()
+const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 const router = express.Router()
-const port = process.env.PORT || 9000
-server.listen(port)
+const port = process.env.PORT || 1337
 
-app.use('/', router)
-app.use(express.static('app/dist'))
-app.use('/api', routes)
+server.listen(port, () => {
+  console.log('server is listening on port ', port)
+})
+
+app.get('/', function (req, res) {
+  res.send('Server is running on port ' + port)
+})
 
 io.on('connection', socket => {
   initSockets(socket)
 })
+
+app.use('/', router)
+
+app.use('/api', routes)
 
 // catch 404
 app.use((req, res) => {
