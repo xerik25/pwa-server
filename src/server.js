@@ -7,7 +7,7 @@ const app = express()
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 const router = express.Router()
-const port = process.env.PORT || 1337
+const port = process.env.PORT || 9999
 
 server.listen(port, () => {
   console.log('server is listening on port ', port)
