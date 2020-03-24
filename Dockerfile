@@ -1,15 +1,14 @@
 FROM node:10.0.0
 
-LABEL maintainer="xerik25@gmail.com"
+RUN mkdir -p /srv/app/services
 
-WORKDIR /app
+WORKDIR /srv/app/services
 
-COPY package.json yarn.lock ./
+COPY package.json ./srv/app/services
+COPY yarn.lock ./srv/app/services
 
-RUN yarn install --frozen-lockfile
+RUN yarn
 
-COPY . .
+COPY . /srv/app/services
 
-EXPOSE 9000
-
-CMD [ "yarn", "prod" ]
+CMD ["yarn", "dev"]
